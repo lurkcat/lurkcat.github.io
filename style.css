@@ -3,3 +3,14 @@ body{
     background-color: beige;
     text-align: center;
 }
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: beige;
+}
+
+.logo {
+    height: 50px; /* Adjust the height as needed */
+    margin-right: auto;
+}
