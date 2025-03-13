@@ -2,11 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Welcome</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="/pics/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Under Construction</title>
+  <link rel="icon" type="image/x-icon" href="/pics/favicon.png"><meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    #gameArea {
+      margin-top: 20px;
+      background: #fff;
+      display: inline-block;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    .score, #timer {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
-<body>
+<!--<body>
 <header>
   <img src="/pics/logo-header.png" alt="Logo" class="logo">
 </header>
@@ -19,5 +52,53 @@
   <p>About Me</p>
   <p>Other important information</p>
 </footer>
+</body>-->
+<body>
+<div class="container">
+  <h1>Under Construction</h1>
+  <p>Willkommen auf der Seite – sie ist noch im Aufbau, aber es gibt schon ein kleines Spiel für dich!</p>
+
+  <div id="gameArea">
+    <h2>Button-Click Game</h2>
+    <p>Drücke den Knopf so oft du kannst in 10 Sekunden!</p>
+    <button id="clickButton" onclick="buttonClicked()">Klick mich!</button>
+    <p class="score">Punkte: <span id="score">0</span></p>
+    <button id="startButton" onclick="startGame()">Spiel Starten</button>
+    <p id="timer"></p>
+  </div>
+</div>
+
+<script>
+  let score = 0;
+  let timeLeft = 10;
+  let gameActive = false;
+  let timerInterval;
+
+  function buttonClicked() {
+    if (gameActive) {
+      score++;
+      document.getElementById("score").textContent = score;
+    }
+  }
+
+  function startGame() {
+    if (gameActive) return; // Spiel läuft schon
+    score = 0;
+    timeLeft = 10;
+    gameActive = true;
+    document.getElementById("score").textContent = score;
+    document.getElementById("timer").textContent = "Zeit übrig: " + timeLeft + " Sekunden";
+
+    timerInterval = setInterval(function() {
+      timeLeft--;
+      document.getElementById("timer").textContent = "Zeit übrig: " + timeLeft + " Sekunden";
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        gameActive = false;
+        document.getElementById("timer").textContent = "Zeit ist abgelaufen!";
+      }
+    }, 1000);
+  }
+</script>
 </body>
 </html>
